@@ -13,7 +13,7 @@
     <h1 th:text="${titulo}" class="text-center"></h1>
     <div class="col-md-4 mx-auto">
         <div class="card">
-            <div class="card-body">
+            <div th:if="${stocks}" class="card-body">
                 <h5 class="card-title">Producto</h5>
                 <p class="card-text">ID: <span th:text="${stocks.product.productId}"></span></p>
                 <p class="card-text">Nombre: <span th:text="${stocks.product.productName}"></span></p>

@@ -18,4 +18,5 @@ public interface IStockService {
     StockDTO findByProduct_ProductId(Integer productId);
 
     List<StockDTO> findByFilters(Integer storeId, Integer categoryId, Integer brandId);
+
 }

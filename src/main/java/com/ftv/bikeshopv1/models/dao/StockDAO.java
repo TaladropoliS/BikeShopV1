@@ -11,21 +11,14 @@ public interface StockDAO extends JpaRepository<StockDTO, Integer> {
 
     Optional<StockDTO> findByProduct_ProductId(Integer productId);
 
-    // Búsquedas con un solo filtro
     List<StockDTO> findByStore_StoreId(Integer storeId);
-
     List<StockDTO> findByProduct_Category_CategoryId(Integer categoryId);
-
     List<StockDTO> findByProduct_Brand_BrandId(Integer brandId);
 
-    // Búsquedas con dos filtros
     List<StockDTO> findByStore_StoreIdAndProduct_Category_CategoryId(Integer storeId, Integer categoryId);
-
     List<StockDTO> findByStore_StoreIdAndProduct_Brand_BrandId(Integer storeId, Integer brandId);
-
     List<StockDTO> findByProduct_Category_CategoryIdAndProduct_Brand_BrandId(Integer categoryId, Integer brandId);
 
-    // Búsqueda con tres filtros
     List<StockDTO> findByStore_StoreIdAndProduct_Category_CategoryIdAndProduct_Brand_BrandId(
             Integer storeId, Integer categoryId, Integer brandId);
 

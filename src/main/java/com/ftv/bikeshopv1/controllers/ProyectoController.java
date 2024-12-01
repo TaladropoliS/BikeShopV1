@@ -75,7 +75,7 @@ public class ProyectoController {
         model.addAttribute("brands", brandService.findAll());
         model.addAttribute("titulo", "Lista Filtrada");
 
-        return "producto";
+        return "inventario";
     }
 
 }
