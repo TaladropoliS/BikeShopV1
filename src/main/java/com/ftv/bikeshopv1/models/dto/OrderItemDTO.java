@@ -26,10 +26,12 @@ public class OrderItemDTO {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
+    @ToString.Exclude
     private ProductDTO product;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
+    @ToString.Exclude
     private OrderDTO order;
 
 }

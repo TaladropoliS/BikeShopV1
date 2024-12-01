@@ -29,13 +29,16 @@ public class ProductDTO {
 
     @ManyToOne
     @JoinColumn(name = "brand_id")
+    @ToString.Exclude
     private BrandDTO brand;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @ToString.Exclude
     private CategoryDTO category;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
     private List<StockDTO> stock = new ArrayList<>();
 
 }

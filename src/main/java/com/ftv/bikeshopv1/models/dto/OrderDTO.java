@@ -31,13 +31,16 @@ public class OrderDTO {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
+    @ToString.Exclude
     private CustomerDTO customer;
 
     @ManyToOne
     @JoinColumn(name = "store_id")
+    @ToString.Exclude
     private StoreDTO store;
 
     @ManyToOne
     @JoinColumn(name = "staff_id")
+    @ToString.Exclude
     private StaffDTO staff;
 }

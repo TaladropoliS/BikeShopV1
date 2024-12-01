@@ -16,7 +16,7 @@ public class ProductService implements IProductService{
     @Override
     public List<ProductDTO> findAll() {
         List<ProductDTO> products = productDAO.findAll();
-        return productDAO.findAll();
+        return products;
     }
 
     @Override

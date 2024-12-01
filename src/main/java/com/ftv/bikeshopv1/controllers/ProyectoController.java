@@ -1,8 +1,7 @@
 package com.ftv.bikeshopv1.controllers;
 
 import com.ftv.bikeshopv1.models.dto.StockDTO;
-import com.ftv.bikeshopv1.models.services.ProductService;
-import com.ftv.bikeshopv1.models.services.StockService;
+import com.ftv.bikeshopv1.models.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,12 +9,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class ProyectoController {
 
     @Autowired
-    private ProductService productService;
+    private BrandService brandService;
+
+    @Autowired
+    private StoreService storeService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @Autowired
     private StockService stockService;
@@ -26,25 +35,47 @@ public class ProyectoController {
         return "index";
     }
 
-    @GetMapping("/monitor")
+    @GetMapping("/inventario")
     public String monitor(Model model) {
         model.addAttribute("titulo", "Monitor de Inventario");
-        model.addAttribute("stock", stockService.findAll());
-        return "monitor";
+        model.addAttribute("stocks", stockService.findAll());
+        model.addAttribute("brands", brandService.findAll());
+        model.addAttribute("stores", storeService.findAll());
+        model.addAttribute("categories", categoryService.findAll());
+        return "inventario";
     }
 
+
     @GetMapping("/producto/{id}")
-    private String producto(Model model, @PathVariable Integer id) {
+    private String stock(Model model, @PathVariable Integer id) {
         model.addAttribute("titulo", "Producto");
-        model.addAttribute("producto", productService.findById(id));
+        model.addAttribute("stocks", stockService.findByProduct_ProductId(id));
         return "producto";
     }
 
-    @GetMapping("/stock/{id}")
-    private String stock(Model model, @PathVariable Integer id) {
-        model.addAttribute("titulo", "Producto");
-        model.addAttribute("stock", stockService.findByProduct(productService.findById(id)));
-        return "stock";
+    @PostMapping("/listaFiltrada")
+    public String listaFiltrada(
+            Model model,
+            @RequestParam(required = false) Integer storeId,
+            @RequestParam(required = false) Integer categoryId,
+            @RequestParam(required = false) Integer brandId) {
+
+        List<StockDTO> filteredStock = stockService.findByFilters(storeId, categoryId, brandId);
+
+        if (storeId == null && categoryId == null && brandId == null) {
+            filteredStock = stockService.findAll();
+        } else {
+            filteredStock = stockService.findByFilters(storeId, categoryId, brandId);
+        }
+
+        // Agregar los datos necesarios al modelo
+        model.addAttribute("stocks", filteredStock);
+        model.addAttribute("stores", storeService.findAll());
+        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("brands", brandService.findAll());
+        model.addAttribute("titulo", "Lista Filtrada");
+
+        return "producto";
     }
 
 }

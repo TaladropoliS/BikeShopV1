@@ -11,22 +11,22 @@
 
 <main class="container">
     <h1 th:text="${titulo}" class="text-center"></h1>
-
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Producto</h5>
-            <p class="card-text">ID: <span th:text="${producto.productId}"></span></p>
-            <p class="card-text">Nombre: <span th:text="${producto.productName}"></span></p>
-            <p class="card-text">Precio: <span th:text="${producto.listPrice}"></span></p>
-            <p class="card-text">Marca: <span th:text="${producto.brand.brandName}"></span></p>
-            <p class="card-text">categoría: <span th:text="${producto.category.categoryName}"></span></p>
-            <p class="card-text">Modelo: <span th:text="${producto.modelYear}"></span></p>
-            <p class="card-text">Stock: <span th:text="${producto.stock[0].quantity}"></span></p>
-            <a th:href="@{/monitor}" class="btn btn-primary">Volver</a>
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">ID: <span th:text="${stocks.product.productId}"></span></p>
+                <p class="card-text">Nombre: <span th:text="${stocks.product.productName}"></span></p>
+                <p class="card-text">Precio: <span th:text="${stocks.product.listPrice}"></span></p>
+                <p class="card-text">Marca: <span th:text="${stocks.product.brand.brandName}"></span></p>
+                <p class="card-text">Categoría: <span th:text="${stocks.product.category.categoryName}"></span></p>
+                <p class="card-text">Modelo: <span th:text="${stocks.product.modelYear}"></span></p>
+                <p class="card-text">Stock: <span th:text="${stocks.quantity}"></span></p>
+                <a th:href="@{/inventario}" class="btn btn-primary">Volver</a>
+            </div>
         </div>
     </div>
 </main>
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

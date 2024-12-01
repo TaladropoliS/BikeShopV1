@@ -3,6 +3,8 @@ package com.ftv.bikeshopv1.models.dto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "categories")
 @Data
@@ -17,5 +19,9 @@ public class CategoryDTO {
 
     @Column(name = "category_name")
     private String categoryName;
+
+    @OneToMany(mappedBy = "category")
+    @ToString.Exclude
+    private List<ProductDTO> products;
 
 }

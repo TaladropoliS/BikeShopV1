@@ -33,6 +33,7 @@ public class StaffDTO {
 
     @ManyToOne
     @JoinColumn(name = "store_id")
+    @ToString.Exclude
     private StoreDTO store;
 
 }

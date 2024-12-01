@@ -1,9 +1,7 @@
 package com.ftv.bikeshopv1.models.dto;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "stocks")
@@ -22,10 +20,12 @@ public class StockDTO {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
+    @ToString.Exclude
     private ProductDTO product;
 
     @ManyToOne
     @JoinColumn(name = "store_id")
+    @ToString.Exclude
     private StoreDTO store;
 
 }

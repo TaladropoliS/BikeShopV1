@@ -15,5 +15,7 @@ public interface IStockService {
 
     void deleteById(Integer id);
 
-    StockDTO findByProduct(ProductDTO product);
+    StockDTO findByProduct_ProductId(Integer productId);
+
+    List<StockDTO> findByFilters(Integer storeId, Integer categoryId, Integer brandId);
 }
