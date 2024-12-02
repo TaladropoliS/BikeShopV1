@@ -35,6 +35,12 @@ public class ProyectoController {
         return "index";
     }
 
+    @GetMapping("/consultasApi")
+    public String consultasApi(Model model) {
+        model.addAttribute("titulo", "API - Bike Shop v.1");
+        return "consultasApi";
+    }
+
     @GetMapping("/inventario")
     public String monitor(Model model) {
         model.addAttribute("titulo", "Monitor de Inventario");
