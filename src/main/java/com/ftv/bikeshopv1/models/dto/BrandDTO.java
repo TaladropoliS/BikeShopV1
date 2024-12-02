@@ -21,6 +21,6 @@ public class BrandDTO {
     private String brandName;
 
     @OneToMany(mappedBy = "brand")
-    @ToString.Exclude  // Agregar esta anotación
+    @ToString.Exclude
     private List<ProductDTO> products;
 }

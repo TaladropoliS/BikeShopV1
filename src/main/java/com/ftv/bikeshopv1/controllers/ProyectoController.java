@@ -64,16 +64,22 @@ public class ProyectoController {
 
         if (storeId == null && categoryId == null && brandId == null) {
             filteredStock = stockService.findAll();
+            model.addAttribute("titulo", "Lista NO Filtrada");
         } else {
+            model.addAttribute("titulo", "Lista Filtrada");
             filteredStock = stockService.findByFilters(storeId, categoryId, brandId);
         }
 
         // Agregar los datos necesarios al modelo
+
+        model.addAttribute("storeId", storeId);
+        model.addAttribute("categoryId", categoryId);
+        model.addAttribute("brandId", brandId);
+
         model.addAttribute("stocks", filteredStock);
         model.addAttribute("stores", storeService.findAll());
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("brands", brandService.findAll());
-        model.addAttribute("titulo", "Lista Filtrada");
 
         return "inventario";
     }

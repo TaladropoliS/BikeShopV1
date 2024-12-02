@@ -17,7 +17,7 @@
             <div class="row row-cols-md-4 g-2 mx-auto">
                 <div class="col-md-3">
                     <label for="idTienda">Tienda</label>
-                    <select class="form-select" id="idTienda" aria-label="Default select example">
+                    <select class="form-select" id="idTienda" name="storeId" aria-label="Default select example">
                         <option value="" selected>...Tienda</option>
                         <option th:each="store : ${stores}"
                                 th:value="${store.storeId}"
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="idCategory">Categoría</label>
-                    <select class="form-select" id="idCategory" aria-label="Default select example">
+                    <select class="form-select" id="idCategory" name="categoryId" aria-label="Default select example">
                         <option value="" selected>...Categoría</option>
                         <option th:each="cat : ${categories}"
                                 th:value="${cat.categoryId}"
@@ -37,11 +37,11 @@
                 </div>
                 <div class="col-md-3">
                     <label for="idMarca">Marca</label>
-                    <select class="form-select" id="idMarca" aria-label="Default select example">
+                    <select class="form-select" id="idMarca" name="brandId" aria-label="Default select example">
                         <option value="" selected>...Marca</option>
                         <option th:each="br : ${brands}"
                                 th:value="${br.brandId}"
-                                th:text="${br.brandName}">
+                                th:text="|${br.brandName} ${br.brandId}|">
                         </option>
                     </select>
                 </div>
@@ -51,6 +51,11 @@
             </div>
         </form>
     </section>
+    <div class="text-center d-flex justify-content-center">
+        <p th:text="${storeId}"></p>
+        <p th:text="${categoryId}"></p>
+        <p th:text="${brandId}"></p>
+    </div>
     <section>
         <div th:if="${not #lists.isEmpty(stocks)}" class="alert alert-success mt-3">
             Se encontraron <span th:text="${#lists.size(stocks)}"></span> resultados.
