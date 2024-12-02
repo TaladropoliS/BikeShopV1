@@ -53,9 +53,9 @@
     </section>
     <div class="text-center d-flex justify-content-center">
         <p class="font-bold">Filtros Aplicados:</p>&nbsp;
-        <p th:text="${storeFiltered?.storeName}"></p>&nbsp;
-        <p th:text="${categoryFiltered?.categoryName}"></p>&nbsp;
-        <p th:text="${brandFiltered?.brandName}"></p>&nbsp;
+        <p th:if="${storeFiltered}">&nbsp;&diams;&nbsp;<span th:text="${storeFiltered?.storeName}"></span></p>
+        <p th:if="${categoryFiltered}">&nbsp;&diams;&nbsp;<span th:text="${categoryFiltered?.categoryName}"></span></p>
+        <p th:if="${brandFiltered}">&nbsp;&diams;&nbsp;<span th:text="${brandFiltered?.brandName}"></span></p>
     </div>
     <section>
         <div th:if="${not #lists.isEmpty(stocks)}" class="alert alert-success mt-3">

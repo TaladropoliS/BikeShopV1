@@ -37,8 +37,8 @@ public class ProductDTO {
     @ToString.Exclude
     private CategoryDTO category;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    @ToString.Exclude
-    private List<StockDTO> stock = new ArrayList<>();
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @ToString.Exclude
+//    private List<StockDTO> stock = new ArrayList<>();
 
 }

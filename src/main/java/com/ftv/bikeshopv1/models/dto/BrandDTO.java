@@ -20,7 +20,7 @@ public class BrandDTO {
     @Column(name = "brand_name")
     private String brandName;
 
-    @OneToMany(mappedBy = "brand")
-    @ToString.Exclude
-    private List<ProductDTO> products;
+//    @OneToMany(mappedBy = "brand")
+//    @ToString.Exclude
+//    private List<ProductDTO> products;
 }

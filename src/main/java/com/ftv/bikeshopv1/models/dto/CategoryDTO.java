@@ -20,8 +20,8 @@ public class CategoryDTO {
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(mappedBy = "category")
-    @ToString.Exclude
-    private List<ProductDTO> products;
+//    @OneToMany(mappedBy = "category")
+//    @ToString.Exclude
+//    private List<ProductDTO> products;
 
 }

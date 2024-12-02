@@ -42,8 +42,8 @@ public class StoreDTO {
     @Column(name = "zip_code")
     private String zipCode;
 
-    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL, orphanRemoval = true)
-    @ToString.Exclude
-    private List<StockDTO> stock = new ArrayList<>();
+//    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @ToString.Exclude
+//    private List<StockDTO> stock = new ArrayList<>();
 
 }
