@@ -67,14 +67,21 @@ public class ProyectoController {
             model.addAttribute("titulo", "Lista NO Filtrada");
         } else {
             model.addAttribute("titulo", "Lista Filtrada");
+
+            if (storeId != null) {
+                model.addAttribute("storeFiltered", storeService.findById(storeId));
+            }
+            if (categoryId != null) {
+                model.addAttribute("categoryFiltered", categoryService.findById(categoryId));
+            }
+            if (brandId != null) {
+                model.addAttribute("brandFiltered", brandService.findById(brandId));
+            }
+
             filteredStock = stockService.findByFilters(storeId, categoryId, brandId);
         }
 
         // Agregar los datos necesarios al modelo
-
-        model.addAttribute("storeId", storeId);
-        model.addAttribute("categoryId", categoryId);
-        model.addAttribute("brandId", brandId);
 
         model.addAttribute("stocks", filteredStock);
         model.addAttribute("stores", storeService.findAll());

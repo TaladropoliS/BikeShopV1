@@ -8,4 +8,6 @@ public interface IBrandService {
 
     List<BrandDTO> findAll();
 
+    BrandDTO findById(Integer id);
+
 }

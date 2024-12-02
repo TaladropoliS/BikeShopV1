@@ -8,4 +8,6 @@ public interface IStoreService {
 
     List<StoreDTO> findAll();
 
+    StoreDTO findById(Integer id);
+
 }

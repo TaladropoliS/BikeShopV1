@@ -52,9 +52,10 @@
         </form>
     </section>
     <div class="text-center d-flex justify-content-center">
-        <p th:text="${storeId}"></p>
-        <p th:text="${categoryId}"></p>
-        <p th:text="${brandId}"></p>
+        <p class="font-bold">Filtros Aplicados:</p>&nbsp;
+        <p th:text="${storeFiltered?.storeName}"></p>&nbsp;
+        <p th:text="${categoryFiltered?.categoryName}"></p>&nbsp;
+        <p th:text="${brandFiltered?.brandName}"></p>&nbsp;
     </div>
     <section>
         <div th:if="${not #lists.isEmpty(stocks)}" class="alert alert-success mt-3">
@@ -77,7 +78,8 @@
                 <td th:text="${stock.product.productName}"></td>
                 <td th:text="${stock.quantity}"></td>
                 <td>
-                    <a th:href="@{/producto/{id}(id=${stock.product.productId})}" class="btn btn-outline-primary">Ver</a>
+                    <a th:href="@{/producto/{id}(id=${stock.product.productId})}"
+                       class="btn btn-outline-primary">Ver</a>
                 </td>
             </tr>
         </table>

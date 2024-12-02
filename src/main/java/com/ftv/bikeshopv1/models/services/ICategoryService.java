@@ -8,4 +8,6 @@ public interface ICategoryService {
 
     List<CategoryDTO> findAll();
 
+    CategoryDTO findById(Integer id);
+
 }
